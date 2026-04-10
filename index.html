@@ -3,11 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tal Digital - אתרים נקיים ומודרניים</title>
+    <title>Minimalist Labs | High-End Digital Solutions</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;600;700;800&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -15,18 +14,15 @@
                 extend: {
                     fontFamily: { sans: ['Assistant', 'sans-serif'] },
                     animation: {
-                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
-                        'blob': 'blob 7s infinite',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'blob': 'blob 10s infinite',
                     },
                     keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(20px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
-                        },
+                        fadeIn: { '0%': { opacity: '0', transform: 'scale(0.95)' }, '100%': { opacity: '1', transform: 'scale(1)' } },
                         blob: {
                             '0%, 100%': { transform: 'translate(0px, 0px) scale(1)' },
-                            '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-                            '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+                            '33%': { transform: 'translate(40px, -60px) scale(1.1)' },
+                            '66%': { transform: 'translate(-30px, 30px) scale(0.9)' },
                         }
                     }
                 }
@@ -35,118 +31,122 @@
     </script>
     
     <style>
-        body { background-color: #f9fafb; overflow-x: hidden; }
-        .glass-card {
-            background: rgba(255, 255, 255, 0.6);
-            backdrop-filter: blur(18px);
-            -webkit-backdrop-filter: blur(18px);
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 10px 40px 0 rgba(31, 38, 135, 0.08);
+        body { background-color: #fdfdfd; overflow-x: hidden; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
-        .glass-btn {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .glass-btn:hover {
-            background: rgba(255, 255, 255, 0.95);
-            transform: translateY(-3px) scale(1.01);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.04);
-        }
-        .delay-1 { animation-delay: 0.2s; }
-        .delay-2 { animation-delay: 0.4s; }
-        .delay-3 { animation-delay: 0.6s; }
+        .nav-btn.active { background: white; shadow: 0 4px 12px rgba(0,0,0,0.05); color: black; font-weight: 700; }
+        .hide { display: none; }
     </style>
 </head>
-<body class="text-gray-900 antialiased font-sans">
+<body class="text-gray-900 antialiased">
 
     <div class="fixed inset-0 -z-10">
-        <div class="absolute top-0 -left-4 w-72 h-72 bg-blue-100 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob"></div>
-        <div class="absolute top-0 -right-4 w-72 h-72 bg-purple-100 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-2000"></div>
-        <div class="absolute -bottom-10 left-20 w-80 h-80 bg-pink-100 rounded-full mix-blend-multiply filter blur-2xl opacity-70 animate-blob animation-delay-4000"></div>
+        <div class="absolute top-0 -left-10 w-96 h-96 bg-blue-50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-purple-50 rounded-full mix-blend-multiply filter blur-3xl opacity-50 animate-blob animation-delay-4000"></div>
     </div>
 
-    <div class="min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="min-h-screen flex flex-col items-center py-10 px-4">
         
-        <div class="glass-card w-full max-w-md rounded-3xl p-8 md:p-10 animate-fade-in-up opacity-0 shadow-lg">
-            
-            <header class="text-center mb-10">
-                <div class="w-20 h-20 bg-white/90 rounded-full mx-auto mb-5 shadow-inner flex items-center justify-center border border-white/60">
-                    <svg class="w-10 h-10 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+        <nav class="glass-panel mb-8 p-1.5 rounded-2xl flex gap-1 w-full max-w-[300px] shadow-sm">
+            <button onclick="showPage('home')" id="btn-home" class="nav-btn active flex-1 py-2 text-sm rounded-xl transition-all">בית</button>
+            <button onclick="showPage('about')" id="btn-about" class="nav-btn flex-1 py-2 text-sm rounded-xl transition-all text-gray-500">מי אני</button>
+        </nav>
+
+        <main id="page-home" class="w-full max-w-md animate-fade-in">
+            <div class="glass-panel rounded-[2.5rem] p-8 shadow-2xl border border-white/60">
+                <header class="text-center mb-10">
+                    <div class="text-5xl mb-4">💎</div>
+                    <h1 class="text-4xl font-extrabold tracking-tighter text-black">Minimalist<span class="font-thin text-gray-400">Labs</span></h1>
+                    <p class="text-gray-500 mt-2 font-light">יצירת אתרים שפשוט עובדים.</p>
+                </header>
+
+                <div class="space-y-4">
+                    <div class="p-5 bg-white/40 rounded-3xl border border-white/80">
+                        <h3 class="font-bold text-gray-800">למה אנחנו?</h3>
+                        <p class="text-sm text-gray-500 mt-1 leading-relaxed">עיצוב נקי, מהירות מקסימלית ואבטחה מלאה. בלי סיבוכים מיותרים.</p>
+                    </div>
+
+                    <a href="https://wa.me/972500000000" class="flex items-center justify-between p-6 bg-black text-white rounded-3xl hover:opacity-90 transition">
+                        <span class="font-bold">הזמנת אתר עכשיו</span>
+                        <span class="text-xl">→</span>
+                    </a>
                 </div>
-                <h1 class="text-4xl font-extrabold tracking-tighter text-gray-950">Tal <span class="font-light text-gray-700">Digital</span></h1>
-                <p class="text-lg text-gray-600 mt-2 font-light">בניית אתרים נקיים ומודרניים</p>
-                <div class="inline-block mt-4 px-3 py-1 bg-white/50 rounded-full border border-white/70 text-xs font-medium text-gray-500 tracking-wider uppercase">סוכנות דיגיטלית מקומית</div>
-            </header>
 
-            <div class="space-y-4 mb-12">
-                <a href="https://wa.me/972500000000?text=היי טל, ראיתי את האתר שלך ואשמח לשמוע פרטים על בניית אתר." class="glass-btn flex items-center gap-5 w-full p-5 rounded-2xl shadow-sm animate-fade-in-up opacity-0 delay-1">
-                    <div class="w-14 h-14 bg-gray-100/50 rounded-2xl flex items-center justify-center text-3xl shadow-inner border border-white/60">💬</div>
-                    <div>
-                        <span class="font-bold block text-xl text-gray-950">סגירת אתר בוואטסאפ</span>
-                        <span class="text-sm text-gray-500 block -mt-1">דברו איתי עכשיו בקליק</span>
-                    </div>
-                    <svg class="w-5 h-5 text-gray-400 mr-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
-                </a>
-
-                <a href="https://wa.me/972500000000?text=אשמח לקבל הצעת מחיר" class="glass-btn flex items-center gap-5 w-full p-5 rounded-2xl shadow-sm animate-fade-in-up opacity-0 delay-2">
-                    <div class="w-14 h-14 bg-gray-100/50 rounded-2xl flex items-center justify-center text-3xl shadow-inner border border-white/60">✨</div>
-                    <div>
-                        <span class="font-bold block text-xl text-gray-950">הצעת מחיר מהירה</span>
-                        <span class="text-sm text-gray-500 block -mt-1">בלי הפתעות, רק תוצאות</span>
-                    </div>
-                    <svg class="w-5 h-5 text-gray-400 mr-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
-                </a>
-            </div>
-
-            <div class="animate-fade-in-up opacity-0 delay-3 mt-10">
-                <h3 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-5 px-1">דוגמאות לעבודות בסטייל</h3>
-                <div class="grid grid-cols-3 gap-3">
-                    <div class="aspect-square rounded-xl border border-white/90 shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 hover:shadow-xl transition-all duration-300" onclick="openModal(this.querySelector('img').src)">
-                        <img src="a1.jpg" alt="Project 1" class="w-full h-full object-cover">
-                    </div>
-                    <div class="aspect-square rounded-xl border border-white/90 shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 hover:shadow-xl transition-all duration-300 delay-100" onclick="openModal(this.querySelector('img').src)">
-                        <img src="a2.jpg" alt="Project 2" class="w-full h-full object-cover">
-                    </div>
-                    <div class="aspect-square rounded-xl border border-white/90 shadow-lg overflow-hidden cursor-pointer transform hover:scale-105 hover:shadow-xl transition-all duration-300 delay-200" onclick="openModal(this.querySelector('img').src)">
-                        <img src="a3.jpg" alt="Project 3" class="w-full h-full object-cover">
+                <div class="mt-10">
+                    <h3 class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-4">פרויקטים נבחרים</h3>
+                    <div class="grid grid-cols-3 gap-3">
+                        <img src="a1.jpg" onclick="openModal(this.src)" class="aspect-square rounded-2xl object-cover cursor-pointer hover:scale-105 transition shadow-sm border-2 border-white">
+                        <img src="a2.jpg" onclick="openModal(this.src)" class="aspect-square rounded-2xl object-cover cursor-pointer hover:scale-105 transition shadow-sm border-2 border-white">
+                        <img src="a3.jpg" onclick="openModal(this.src)" class="aspect-square rounded-2xl object-cover cursor-pointer hover:scale-105 transition shadow-sm border-2 border-white">
                     </div>
                 </div>
-                <p class="text-[10px] text-center text-gray-400 mt-4 px-2">במחיר מיוחד לשכנים ב-300 ש"ח!</p>
             </div>
+        </main>
 
-            <footer class="mt-16 pt-6 border-t border-white/30 text-center animate-fade-in-up opacity-0 delay-3">
-                <p class="text-[10px] text-gray-400 tracking-widest uppercase font-extralight">נוצר על ידי <span class="font-bold text-gray-500">Tal Digital</span> @ 2026</p>
-            </footer>
+        <main id="page-about" class="w-full max-w-md animate-fade-in hide">
+            <div class="glass-panel rounded-[2.5rem] p-8 shadow-2xl border border-white/60">
+                <header class="mb-8">
+                    <h2 class="text-3xl font-extrabold text-black">היי, אני טל.</h2>
+                    <p class="text-gray-500 mt-2 leading-relaxed">אני מפתח Full-Stack שמתמחה ביצירת חוויות דיגיטליות נקיות. אני משלב קוד חזק (React, Node.js) עם עיצוב מינימליסטי שלא משאיר מקום לספק.</p>
+                </header>
 
-        </div> </div> <div id="imageModal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-sm flex items-center justify-center p-4 cursor-pointer transition-opacity duration-300" onclick="closeModal()">
-        <span class="absolute top-5 right-5 text-white text-4xl">&times;</span>
-        <img id="modalImage" class="max-w-full max-h-full rounded-lg shadow-2xl transition-transform duration-300 scale-95 object-contain">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="p-4 bg-white/50 rounded-2xl border border-white">
+                        <span class="text-xl">🚀</span>
+                        <h4 class="font-bold text-sm mt-2">ביצועים</h4>
+                        <p class="text-xs text-gray-400">טעינה בפחות משנייה אחת.</p>
+                    </div>
+                    <div class="p-4 bg-white/50 rounded-2xl border border-white">
+                        <span class="text-xl">🛡️</span>
+                        <h4 class="font-bold text-sm mt-2">אבטחה</h4>
+                        <p class="text-xs text-gray-400">חסינות מלאה לפריצות.</p>
+                    </div>
+                </div>
+
+                <footer class="mt-10 pt-6 border-t border-white/20 text-center">
+                    <p class="text-xs text-gray-400 font-light italic">"פשטות היא התחכום האולטימטיבי"</p>
+                </footer>
+            </div>
+        </main>
+
+        <p class="mt-8 text-[10px] text-gray-300 tracking-[0.2em] uppercase">Minimalist Labs © 2026</p>
+    </div>
+
+    <div id="imageModal" class="fixed inset-0 z-50 hide bg-black/95 backdrop-blur-md flex items-center justify-center p-6" onclick="closeModal()">
+        <img id="modalImage" class="max-w-full max-h-full rounded-2xl transition-all duration-300 scale-90">
     </div>
 
     <script>
+        function showPage(pageId) {
+            document.getElementById('page-home').classList.add('hide');
+            document.getElementById('page-about').classList.add('hide');
+            document.getElementById('btn-home').classList.remove('active', 'text-black', 'font-bold');
+            document.getElementById('btn-about').classList.remove('active', 'text-black', 'font-bold');
+            document.getElementById('btn-home').classList.add('text-gray-500');
+            document.getElementById('btn-about').classList.add('text-gray-500');
+
+            document.getElementById('page-' + pageId).classList.remove('hide');
+            document.getElementById('btn-' + pageId).classList.add('active', 'text-black', 'font-bold');
+            document.getElementById('btn-' + pageId).classList.remove('text-gray-500');
+        }
+
         function openModal(src) {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
-            modal.classList.remove('hidden');
-            modal.style.opacity = '1';
+            modal.classList.remove('hide');
             modalImg.src = src;
-            setTimeout(() => {
-                modalImg.classList.remove('scale-95');
-                modalImg.classList.add('scale-100');
-            }, 10);
+            setTimeout(() => { modalImg.classList.remove('scale-90'); modalImg.classList.add('scale-100'); }, 10);
         }
 
         function closeModal() {
             const modal = document.getElementById('imageModal');
             const modalImg = document.getElementById('modalImage');
-            modalImg.classList.remove('scale-100');
-            modalImg.classList.add('scale-95');
-            modal.style.opacity = '0';
-            setTimeout(() => { 
-                modal.classList.add('hidden'); 
-            }, 200);
+            modalImg.classList.add('scale-90');
+            setTimeout(() => { modal.classList.add('hide'); }, 200);
         }
     </script>
 </body>
